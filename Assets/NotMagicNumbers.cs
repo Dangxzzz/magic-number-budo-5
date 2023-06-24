@@ -22,67 +22,50 @@ public class NotMagicNumbers : MonoBehaviour
 
     void Update()
     {
+        if (Input.anyKeyDown)
+        {
+            message.text = SendMessage();
+        }
         if (Input.GetKeyDown(KeyCode.Keypad1))
         {
             _sum++;
-            message.text = SendMessage();
-            _iterations++;
-
         }
         else if (Input.GetKeyDown(KeyCode.Keypad2))
         {
             _sum+=2;
-            message.text = SendMessage();
-            _iterations++;
         }
         else if (Input.GetKeyDown(KeyCode.Keypad3))
         {
             _sum+=3;
-            message.text = SendMessage();
-            _iterations++;
         }
         else if (Input.GetKeyDown(KeyCode.Keypad4))
         {
             _sum+=4;
-            message.text = SendMessage();
-            _iterations++;
         }
         else if (Input.GetKeyDown(KeyCode.Keypad5))
         {
             _sum+=5;
-            message.text = SendMessage();
-            _iterations++;
         }
         else if (Input.GetKeyDown(KeyCode.Keypad6))
         {
             _sum+=6;
-            message.text = SendMessage();
-            _iterations++;
         }
         else if (Input.GetKeyDown(KeyCode.Keypad7))
         {
             _sum+=7;
-            message.text = SendMessage();
-            _iterations++;
         }
         else if (Input.GetKeyDown(KeyCode.Keypad8))
         {
             _sum+=8;
-            message.text = SendMessage();
-            _iterations++;
         }
         else if (Input.GetKeyDown(KeyCode.Keypad9))
         {
             _sum+=9;
-            message.text = SendMessage();
-            _iterations++;
         }
-
         if (_sum >= range)
         {
             endGame.text = $"Конец игры, затарчено попыток: {_iterations}";
         }
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _iterations = 0;
@@ -94,6 +77,8 @@ public class NotMagicNumbers : MonoBehaviour
 
     public string SendMessage()
     {
+        _iterations++;
         return $"Значене суммы {_sum}";
     }
+    
 }
