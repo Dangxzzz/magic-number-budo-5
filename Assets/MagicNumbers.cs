@@ -1,28 +1,33 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public int min=1;
-    public int max=1000;
+    #region Variables
+
+    public TextMeshProUGUI endGame;
+    public int max = 1000;
+    public int min = 1;
+    public TextMeshProUGUI question;
+
+    public TextMeshProUGUI startText;
     private int _guess;
     private int _iteration;
-    
-    public TextMeshProUGUI startText;
-    public TextMeshProUGUI question;
-    public TextMeshProUGUI endGame;
 
+    #endregion
 
-    void Start()
+    #region Unity lifecycle
+
+    private void Start()
     {
         startText.text = $"Загадай число от {min} до {max}";
         CalculateNumber();
         question.text = SendMessage();
         _iteration++;
     }
-    
-    void Update()
+
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
@@ -40,7 +45,7 @@ public class NewBehaviourScript : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-            endGame.text=$"Угадал. Твоё число {_guess} и мне понадобилось {_iteration} попыток!";
+            endGame.text = $"Угадал. Твоё число {_guess} и мне понадобилось {_iteration} попыток!";
         }
         else if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -49,6 +54,10 @@ public class NewBehaviourScript : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
+
+    #endregion
+
+    #region Public methods
 
     public void CalculateNumber()
     {
@@ -60,4 +69,5 @@ public class NewBehaviourScript : MonoBehaviour
         return $"Твоё число {_guess}?";
     }
 
+    #endregion
 }
